@@ -1,0 +1,24 @@
+# ===== JAVA & MAVEN =====
+*.class
+target/
+
+# ===== INTELLIJ IDEA =====
+.idea/
+*.iml
+*.ipr
+
+# ===== SELENIUM =====
+**/drivers/
+chromedriver*
+geckodriver*
+*.log
+
+# ===== REPORTS =====
+cucumber-reports/
+test-output/
+screenshots/
+allure-results/
+
+# ===== SYSTEM =====
+.DS_Store
+Thumbs.db

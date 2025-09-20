@@ -1,5 +1,4 @@
 Feature: This feature will provide different ways of interacting
-
   with the booking platform
   I as a client
   want to fill my personal data out

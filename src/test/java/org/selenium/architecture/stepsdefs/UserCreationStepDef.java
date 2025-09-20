@@ -7,12 +7,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.selenium.architecture.pages.RegistrationSucessfulPage;
+import org.selenium.architecture.pages.UserCreationPage;
 import org.testng.Assert;
 
 
 public class UserCreationStepDef {
 
-    private WebDriver driver;
     private UserCreationPage userCreationPage;
     private RegistrationSucessfulPage registrationSucessfulPage;
 
@@ -45,7 +46,7 @@ public class UserCreationStepDef {
 
     @Then("a successful header should appear")
     public void a_successful_header_should_appear(){
-        RegistrationSucessfulPage registrationSucessfulPage = new RegistrationSucessfulPage(DriverManager.getDriver());
+        registrationSucessfulPage = new RegistrationSucessfulPage(DriverManager.getDriver());
         Assert.assertTrue(registrationSucessfulPage.isRegistryConfirmationTitleVisible());
         Assert.assertTrue(registrationSucessfulPage.isGetRegistryConfirmDescriptionVisible());
     }

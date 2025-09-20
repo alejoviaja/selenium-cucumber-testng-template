@@ -1,4 +1,4 @@
-package org.selenium.architecture.stepsdefs;
+package org.selenium.architecture.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

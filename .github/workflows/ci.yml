@@ -24,17 +24,22 @@ jobs:
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        
-    - name: Install Chrome (Windows)
+
+    - name: Check Chrome
       shell: powershell
       run: |
-        if (-not (Get-Command "chrome" -ErrorAction SilentlyContinue)) {
-          $chromeUrl = "https://dl.google.com/chrome/install/chrome_installer.exe"
-          $chromeInstaller = "$env:TEMP\chrome_installer.exe"
-          Write-Host "Downloading Chrome..."
-          Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeInstaller
-          Write-Host "Installing Chrome..."
-          Start-Process -FilePath $chromeInstaller -ArgumentList "/silent", "/install" -Wait
+        if (Get-Command "chrome" -ErrorAction SilentlyContinue) {
+          Write-Host "Chrome is available"
+        } else {
+          Write-Host "Chrome not found - please install"
+          if (-not (Get-Command "chrome" -ErrorAction SilentlyContinue)) {
+            $chromeUrl = "https://dl.google.com/chrome/install/chrome_installer.exe"
+            $chromeInstaller = "$env:TEMP\chrome_installer.exe"
+            Write-Host "Downloading Chrome..."
+            Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeInstaller
+            Write-Host "Installing Chrome..."
+            Start-Process -FilePath $chromeInstaller -ArgumentList "/silent", "/install" -Wait
+          }
         }
         
     - name: Run tests

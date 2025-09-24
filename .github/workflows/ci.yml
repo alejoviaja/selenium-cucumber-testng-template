@@ -24,16 +24,6 @@ jobs:
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-
-    - name: Check Chrome
-      shell: powershell
-      run: |
-        if (Get-Command "chrome" -ErrorAction SilentlyContinue) {
-          Write-Host "Chrome is available"
-        } else {
-          Write-Host "Chrome not found - please install manually"
-          exit 1
-        }
         
     - name: Install Chrome (Windows)
       shell: powershell
